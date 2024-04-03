@@ -5,4 +5,4 @@ website: https://github.com/true-og/Template-OG/
 version: '${version}'
 api-version: '${apiVersion}'
 main: plugin.TemplateOG
-depend: [DiamondBankOG]
+depend: [DiamondBank-OG]
