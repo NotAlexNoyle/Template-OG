@@ -23,21 +23,21 @@ public class Listeners implements Listener {
 	public void onBlockBreak(BlockBreakEvent event) {
 
 		// Open a spectator GUI for the player who broke the block.
-		// new SpectatorGui(TemplateOG.getPlugin(), event.getPlayer()).open(true);
-		
-		CompletableFuture<PostgreSQL.PlayerBalance> playerBalance = DiamondBankOG.getPlayerBalance(event.getPlayer().getUniqueId(), PostgreSQL.BalanceType.ALL);
+		new SpectatorGui(TemplateOG.getPlugin(), event.getPlayer()).open(true);
 
 		try {
-			
+
+			CompletableFuture<PostgreSQL.PlayerBalance> playerBalance = DiamondBankOG.getPlayerBalance(event.getPlayer().getUniqueId(), PostgreSQL.BalanceType.ALL);
+
 			Utils.templateOGPlaceholderMessage(event.getPlayer(), "Your current balance is: &B" + playerBalance.get());
 		
 		}
 		catch (InterruptedException | ExecutionException error) {
-			
+
 			Utils.templateOGPlaceholderMessage(event.getPlayer(), "&cERROR: Your balance could not be fetched! " + error.getMessage());
 
 		}
-		
+
 	}
 
 }
