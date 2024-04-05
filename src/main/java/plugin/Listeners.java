@@ -2,7 +2,6 @@
 // Author: NotAlexNoyle.
 package plugin;
 
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 // Import libraries.
@@ -25,17 +24,17 @@ public class Listeners implements Listener {
 		// Open a spectator GUI for the player who broke the block.
 		// new SpectatorGui(TemplateOG.getPlugin(), event.getPlayer()).open(true);
 
-		UUID playerUUID = event.getPlayer().getUniqueId();
-		BalanceType balanceType = BalanceType.ALL;
-		DiamondBankOG.getPlayerBalance(event.getPlayer().getUniqueId(), BalanceType.ALL);
-		TemplateOG.getDiamondBankPlugin();
-		CompletableFuture<Double> balanceFuture = DiamondBankOG.getPlayerBalance(playerUUID, balanceType);
+		CompletableFuture<Double> balanceFuture = DiamondBankOG.getPlayerBalance(event.getPlayer().getUniqueId(), BalanceType.ALL);
 		balanceFuture.thenAccept(balance -> {
+
 			Utils.templateOGPlaceholderMessage(event.getPlayer(), "Your current balance is: " + balance);
+
 		}).exceptionally(throwable -> {
+
 			// Handle any errors that might occur while fetching the balance
 			TemplateOG.getPlugin().getLogger().info("Error getting player balance: " + throwable.getMessage());
 			return null;
+
 		});
 
 	}

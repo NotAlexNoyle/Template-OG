@@ -1,16 +1,10 @@
 package plugin;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import me.barny1094875.utilitiesog.UtilitiesOG;
-import net.trueog.diamondbankog.DiamondBankOG;
 
 public class TemplateOG extends JavaPlugin {
 
 	private static TemplateOG plugin;
-	private static DiamondBankOG diamondBankPlugin = (DiamondBankOG) Bukkit.getPluginManager().getPlugin("DiamondBank-OG");
-	private static UtilitiesOG utilitiesPlugin = (UtilitiesOG) Bukkit.getPluginManager().getPlugin("UtilitiesOG");
 	public void onEnable() {
 
 		plugin = this;
@@ -18,14 +12,6 @@ public class TemplateOG extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Listeners(), this);
 		//registerExpansion();
 
-	}
-
-	public static DiamondBankOG getDiamondBankPlugin() {
-		return diamondBankPlugin;
-	}
-
-	public static UtilitiesOG getUtilitiesPlugin() {
-		return utilitiesPlugin;
 	}
 
 	public static TemplateOG getPlugin() {
