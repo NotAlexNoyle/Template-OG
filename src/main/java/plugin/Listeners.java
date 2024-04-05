@@ -11,7 +11,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import me.barny1094875.utilitiesog.UtilitiesOG;
 import net.trueog.diamondbankog.DiamondBankOG;
 import net.trueog.diamondbankog.PostgreSQL.BalanceType;
 
@@ -29,10 +28,10 @@ public class Listeners implements Listener {
 		UUID playerUUID = event.getPlayer().getUniqueId();
 		BalanceType balanceType = BalanceType.ALL;
 		DiamondBankOG.getPlayerBalance(event.getPlayer().getUniqueId(), BalanceType.ALL);
-		CompletableFuture<Double> balanceFuture = TemplateOG.getDiamondBankPlugin().getPlayerBalance(playerUUID, balanceType);
-
+		TemplateOG.getDiamondBankPlugin();
+		CompletableFuture<Double> balanceFuture = DiamondBankOG.getPlayerBalance(playerUUID, balanceType);
 		balanceFuture.thenAccept(balance -> {
-			Utils.templateOGPlaceholderMessage(event.getPlayer(), "Your current bank balance is: " + balance);
+			Utils.templateOGPlaceholderMessage(event.getPlayer(), "Your current balance is: " + balance);
 		}).exceptionally(throwable -> {
 			// Handle any errors that might occur while fetching the balance
 			TemplateOG.getPlugin().getLogger().info("Error getting player balance: " + throwable.getMessage());
