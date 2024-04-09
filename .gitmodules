@@ -4,3 +4,6 @@
 [submodule "libs/GxUI"]
 	path = libs/GxUI
 	url = https://github.com/gxorge/GxUI
+[submodule "libs/DiamondBank-OG"]
+	path = libs/DiamondBank-OG
+	url = https://github.com/true-og/DiamondBank-Test
